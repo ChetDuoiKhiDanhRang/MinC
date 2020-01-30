@@ -80,6 +80,8 @@
             this.Controls.Add(this.btnBankStability);
             this.Controls.Add(this.pictureBox1);
             this.DoubleBuffered = true;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "FormMain";
             this.Text = "MinC (p)";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
