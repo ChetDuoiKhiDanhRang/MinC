@@ -34,9 +34,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(845, 480);
+            this.ClientSize = new System.Drawing.Size(688, 483);
             this.Name = "FormBankStabibity";
-            this.Text = "Model B";
+            this.Text = "Model B (BankStabibity)";
             this.ResumeLayout(false);
 
         }
