@@ -31,6 +31,7 @@ namespace MinC
             dgvData.Columns[8].DefaultCellStyle.Format = "#,##0.00";
             dgvData.Columns[9].DefaultCellStyle.Format = "0.00%";
             dgvData.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvData.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             int count = BanksData.Columns.Count;
             for (int i = 0; i < count; i++)
             {
