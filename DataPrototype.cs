@@ -15,16 +15,16 @@ namespace MinC
             Caption                                   = "Bank"
         };
 
-        internal DataColumn colFinancialYear = new DataColumn("FinancialYear")
+        internal DataColumn colFinancialYear          = new DataColumn("FinancialYear")
         {
-            DataType = typeof(int),
-            Caption = "Financial Year"
+            DataType                                  = typeof(int),
+            Caption                                   = "Financial Year"
         };
 
-        internal DataColumn colTotalAssets = new DataColumn("TotalAssets")
+        internal DataColumn colTotalAssets            = new DataColumn("TotalAssets")
         {
-            DataType = typeof(double),
-            Caption = "Total Assets"
+            DataType                                  = typeof(double),
+            Caption                                   = "Total Assets"
         };
 
         internal DataColumn colEquity                 = new DataColumn("Equity")

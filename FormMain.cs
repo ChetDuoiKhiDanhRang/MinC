@@ -31,6 +31,7 @@ namespace MinC
             dgvData.Columns[8].DefaultCellStyle.Format = "#,##0.00";
             dgvData.Columns[9].DefaultCellStyle.Format = "0.00%";
             dgvData.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvData.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             int count = BanksData.Columns.Count;
             for (int i = 0; i < count; i++)
             {
@@ -77,6 +78,10 @@ namespace MinC
             foreach (var sheet in DataFile.Workbook.Worksheets)
             {
                 string bankName = sheet.Name;
+                if (sheet.Dimension==null)
+                {
+                    continue;
+                }
                 for (int i = 1; i < sheet.Dimension.Rows; i++)
                 {
                     var nr = BanksData.NewRow();
@@ -87,7 +92,6 @@ namespace MinC
                         {
                             nr[j + 1] = sheet.Cells[i + 1, j + 1].Value;
                         }
-
                     }
                     BanksData.Rows.Add(nr);
                 }
@@ -113,7 +117,7 @@ namespace MinC
         FormBankStabibity frmBankStability;
 
 
-        private void btnBankStability_Click(object sender, EventArgs e)
+        private void btnModelB_Click(object sender, EventArgs e)
         {
             if (frmBankStability == null || frmBankStability.IsDisposed)
             {
@@ -157,6 +161,10 @@ namespace MinC
                 string s = (string)cmbBank.SelectedItem;
                 BanksData.DefaultView.RowFilter = "BankName = '" + s + "'";
             }
+        }
+
+        private void btnModelA_Click(object sender, EventArgs e)
+        {
 
         }
     }
