@@ -147,6 +147,7 @@
             // 
             // btnBankStability
             // 
+            this.btnBankStability.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnBankStability.Location = new System.Drawing.Point(863, 319);
             this.btnBankStability.Name = "btnBankStability";
             this.btnBankStability.Size = new System.Drawing.Size(133, 37);
@@ -157,6 +158,7 @@
             // 
             // button1
             // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.Location = new System.Drawing.Point(724, 319);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(133, 37);
