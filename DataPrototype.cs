@@ -51,10 +51,28 @@ namespace MinC
             Caption                                   = "Total Expense"
         };
 
-        internal DataColumn colInvestonTech           = new DataColumn("InvestOnTech")
+        internal DataColumn colInvestOnTech           = new DataColumn("InvestOnTech")
         {
             DataType                                  = typeof(double),
             Caption                                   = "Invest On Tech"
+        };
+
+        internal DataColumn colInvestOnNewTree = new DataColumn("InvestOnNewTree")
+        {
+            DataType = typeof(double),
+            Caption = "InvestOnNewTree"
+        };
+
+        internal DataColumn colZeta = new DataColumn("Zeta")
+        {
+            DataType = typeof(double),
+            Caption = "Zeta(i)"
+        };
+
+        internal DataColumn colY = new DataColumn("Y")
+        {
+            DataType = typeof(double),
+            Caption = "Y(t)"
         };
 
         internal DataColumn colCustomerDeposit        = new DataColumn("CustomerDeposit")
@@ -78,7 +96,8 @@ namespace MinC
             Columns.Add(colROA);
             Columns.Add(colNetProfitBeforeTax);
             Columns.Add(colTotalExpense);
-            Columns.Add(colInvestonTech);
+            Columns.Add(colInvestOnTech);
+            Columns.Add(colInvestOnNewTree);
             Columns.Add(colCustomerDeposit);
             Columns.Add(colExpenseOperatingIncome);
         }

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace MinC
 {
-    public partial class FormBankStabibity : Form
+    public partial class FormModelA : Form
     {
-        public FormBankStabibity()
+        public FormModelA()
         {
             InitializeComponent();
         }

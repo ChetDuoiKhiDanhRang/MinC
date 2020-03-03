@@ -56,11 +56,17 @@
     <Compile Include="DataPrototype.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="FormBankStabibity.cs">
+    <Compile Include="FormModelA.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormBankStabibity.Designer.cs">
-      <DependentUpon>FormBankStabibity.cs</DependentUpon>
+    <Compile Include="FormModelA.Designer.cs">
+      <DependentUpon>FormModelA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormModelB.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormModelB.Designer.cs">
+      <DependentUpon>FormModelB.cs</DependentUpon>
     </Compile>
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
@@ -70,8 +76,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FormBankStabibity.resx">
-      <DependentUpon>FormBankStabibity.cs</DependentUpon>
+    <EmbeddedResource Include="FormModelB.resx">
+      <DependentUpon>FormModelB.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
@@ -101,6 +107,14 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\A_F1.rtf" />
+    <None Include="Resources\A_F10.rtf" />
+    <None Include="Resources\A_F2.rtf" />
+    <None Include="Resources\A_F3.rtf" />
+    <None Include="Resources\A_F4.rtf" />
+    <None Include="Resources\A_F5.rtf" />
+    <None Include="Resources\A_F6.rtf" />
+    <None Include="Resources\A_F7.rtf" />
     <None Include="Resources\b.png" />
   </ItemGroup>
   <ItemGroup>

@@ -1,14 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using OfficeOpenXml;
+using System;
 using System.Windows.Forms;
-using OfficeOpenXml;
-using OfficeOpenXml.Packaging;
 
 namespace MinC
 {
@@ -78,27 +70,28 @@ namespace MinC
             foreach (var sheet in DataFile.Workbook.Worksheets)
             {
                 string bankName = sheet.Name;
-                if (sheet.Dimension==null)
+                if (sheet.Dimension == null)
                 {
                     continue;
                 }
-                for (int i = 1; i < sheet.Dimension.Rows; i++)
+                for (int row = 3; row < sheet.Dimension.Rows; row++)
                 {
                     var nr = BanksData.NewRow();
                     nr[0] = bankName;
-                    for (int j = 0; j < BanksData.Columns.Count; j++)
+                    for (int column = 0; column < BanksData.Columns.Count; column++)
                     {
-                        if (sheet.Cells[i + 1, j + 1].Value != null)
+                        int n = sheet.Dimension.Columns;
+                        if (sheet.Cells[row + 3, column].Value != null)
                         {
-                            nr[j + 1] = sheet.Cells[i + 1, j + 1].Value;
+                            nr[column + 1] = sheet.Cells[row + 3, column].Value;
                         }
                     }
                     BanksData.Rows.Add(nr);
                 }
             }
             dgvData.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-            
-            
+
+
         }
 
         ExcelPackage dataFile;
@@ -114,14 +107,14 @@ namespace MinC
         }
 
 
-        FormBankStabibity frmBankStability;
+        FormModelB frmBankStability;
 
 
         private void btnModelB_Click(object sender, EventArgs e)
         {
             if (frmBankStability == null || frmBankStability.IsDisposed)
             {
-                frmBankStability = new FormBankStabibity();
+                frmBankStability = new FormModelB();
                 frmBankStability.Show();
             }
         }
@@ -165,7 +158,7 @@ namespace MinC
 
         private void btnModelA_Click(object sender, EventArgs e)
         {
-
+            
         }
     }
 }

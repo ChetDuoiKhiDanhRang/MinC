@@ -32,7 +32,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblFileLocation = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lblDataFile = new System.Windows.Forms.Label();
@@ -40,8 +39,9 @@
             this.dgvData = new System.Windows.Forms.DataGridView();
             this.btnBankStability = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // textBox1
@@ -54,16 +54,6 @@
             this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(793, 20);
             this.textBox1.TabIndex = 2;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::MinC.Properties.Resources.b;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(106, 68);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
             // 
             // lblFileLocation
             // 
@@ -152,7 +142,7 @@
             this.btnBankStability.Name = "btnBankStability";
             this.btnBankStability.Size = new System.Drawing.Size(133, 37);
             this.btnBankStability.TabIndex = 7;
-            this.btnBankStability.Text = "Model B\r\n(Bank Stability)";
+            this.btnBankStability.Text = "Model B\r\n";
             this.btnBankStability.UseVisualStyleBackColor = true;
             this.btnBankStability.Click += new System.EventHandler(this.btnModelB_Click);
             // 
@@ -166,6 +156,16 @@
             this.button1.Text = "Model A";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.btnModelA_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::MinC.Properties.Resources.b;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(106, 68);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
             // FormMain
             // 
@@ -186,8 +186,8 @@
             this.MaximizeBox = false;
             this.Name = "FormMain";
             this.Text = "MinC (p)";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

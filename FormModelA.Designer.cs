@@ -1,6 +1,6 @@
 ﻿namespace MinC
 {
-    partial class FormBankStabibity
+    partial class FormModelA
     {
         /// <summary>
         /// Required designer variable.
@@ -28,17 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.SuspendLayout();
-            // 
-            // FormBankStabibity
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(688, 483);
-            this.Name = "FormBankStabibity";
-            this.Text = "Model B (BankStabibity)";
-            this.ResumeLayout(false);
-
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Text = "FormModelA";
         }
 
         #endregion
