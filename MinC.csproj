@@ -51,7 +51,8 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="WinMathML">
-      <HintPath>..\..\..\Downloads\Compressed\WinMathML.dll</HintPath>
+      <HintPath>packages\WinMathML.dll</HintPath>
+      <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
