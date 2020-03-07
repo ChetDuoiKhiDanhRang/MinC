@@ -40,8 +40,12 @@
             this.btnBankStability = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cmbi = new System.Windows.Forms.ComboBox();
+            this.nudFilterValue_i = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudFilterValue_i)).BeginInit();
             this.SuspendLayout();
             // 
             // textBox1
@@ -128,32 +132,33 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvData.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvData.Location = new System.Drawing.Point(13, 87);
+            this.dgvData.Location = new System.Drawing.Point(13, 127);
             this.dgvData.Name = "dgvData";
             this.dgvData.ReadOnly = true;
             this.dgvData.RowHeadersVisible = false;
-            this.dgvData.Size = new System.Drawing.Size(983, 226);
+            this.dgvData.Size = new System.Drawing.Size(983, 229);
             this.dgvData.TabIndex = 6;
             // 
             // btnBankStability
             // 
-            this.btnBankStability.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBankStability.Location = new System.Drawing.Point(863, 319);
+            this.btnBankStability.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnBankStability.Location = new System.Drawing.Point(724, 84);
             this.btnBankStability.Name = "btnBankStability";
             this.btnBankStability.Size = new System.Drawing.Size(133, 37);
             this.btnBankStability.TabIndex = 7;
             this.btnBankStability.Text = "Model B\r\n";
             this.btnBankStability.UseVisualStyleBackColor = true;
+            this.btnBankStability.Visible = false;
             this.btnBankStability.Click += new System.EventHandler(this.btnModelB_Click);
             // 
             // button1
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(724, 319);
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Location = new System.Drawing.Point(863, 84);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(133, 37);
             this.button1.TabIndex = 7;
-            this.button1.Text = "Model A";
+            this.button1.Text = "Calculate (A)";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.btnModelA_Click);
             // 
@@ -162,10 +167,68 @@
             this.pictureBox1.Image = global::MinC.Properties.Resources.b;
             this.pictureBox1.Location = new System.Drawing.Point(12, 12);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(106, 68);
+            this.pictureBox1.Size = new System.Drawing.Size(106, 98);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(124, 97);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(46, 13);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Filter i:";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // cmbi
+            // 
+            this.cmbi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbi.FormattingEnabled = true;
+            this.cmbi.Items.AddRange(new object[] {
+            "None",
+            ">",
+            "<",
+            ">=",
+            "<=",
+            "=="});
+            this.cmbi.Location = new System.Drawing.Point(203, 93);
+            this.cmbi.Name = "cmbi";
+            this.cmbi.Size = new System.Drawing.Size(52, 21);
+            this.cmbi.TabIndex = 8;
+            this.cmbi.SelectedIndexChanged += new System.EventHandler(this.cmbi_SelectedIndexChanged);
+            // 
+            // nudFilterValue_i
+            // 
+            this.nudFilterValue_i.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.nudFilterValue_i.DecimalPlaces = 2;
+            this.nudFilterValue_i.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.nudFilterValue_i.Location = new System.Drawing.Point(261, 94);
+            this.nudFilterValue_i.Maximum = new decimal(new int[] {
+            98,
+            0,
+            0,
+            131072});
+            this.nudFilterValue_i.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.nudFilterValue_i.Name = "nudFilterValue_i";
+            this.nudFilterValue_i.Size = new System.Drawing.Size(51, 20);
+            this.nudFilterValue_i.TabIndex = 9;
+            this.nudFilterValue_i.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.nudFilterValue_i.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            65536});
             // 
             // FormMain
             // 
@@ -173,11 +236,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(1008, 368);
+            this.Controls.Add(this.nudFilterValue_i);
+            this.Controls.Add(this.cmbi);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnBankStability);
             this.Controls.Add(this.dgvData);
             this.Controls.Add(this.cmbBank);
             this.Controls.Add(this.lblDataFile);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblFileLocation);
             this.Controls.Add(this.textBox1);
@@ -188,6 +254,7 @@
             this.Text = "MinC (p)";
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudFilterValue_i)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -203,6 +270,9 @@
         private System.Windows.Forms.DataGridView dgvData;
         private System.Windows.Forms.Button btnBankStability;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cmbi;
+        private System.Windows.Forms.NumericUpDown nudFilterValue_i;
     }
 }
 

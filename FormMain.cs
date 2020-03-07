@@ -1,6 +1,9 @@
 ﻿using OfficeOpenXml;
 using System;
 using System.Windows.Forms;
+using fmath;
+using fmath.controls;
+using System.Collections.Generic;
 
 namespace MinC
 {
@@ -8,20 +11,27 @@ namespace MinC
     {
         public event EventHandler<string> DataFileChanged;
         public event EventHandler<DataPrototype> DataTableChanged;
+        public event EventHandler<string> StringFilterChanged;
         public FormMain()
         {
             InitializeComponent();
+            
 
             BanksData = new DataPrototype();
             dgvData.DataSource = BanksData;
-            dgvData.Columns[2].DefaultCellStyle.Format = "#,##0.00";
-            dgvData.Columns[3].DefaultCellStyle.Format = "#,##0.00";
-            dgvData.Columns[4].DefaultCellStyle.Format = "0.00%";
-            dgvData.Columns[5].DefaultCellStyle.Format = "#,##0.00";
-            dgvData.Columns[6].DefaultCellStyle.Format = "#,##0.00";
-            dgvData.Columns[7].DefaultCellStyle.Format = "#,##0.00";
-            dgvData.Columns[8].DefaultCellStyle.Format = "#,##0.00";
+            dgvData.Columns[2].DefaultCellStyle.Format = "#,##0.00 $";
+            dgvData.Columns[3].DefaultCellStyle.Format = "#,##0.00 $";
+            dgvData.Columns[4].DefaultCellStyle.Format = "0.00 %";
+            dgvData.Columns[5].DefaultCellStyle.Format = "#,##0.00 $";
+            dgvData.Columns[6].DefaultCellStyle.Format = "#,##0.00 $";
+            dgvData.Columns[7].DefaultCellStyle.Format = "#,##0.00 $";
+            dgvData.Columns[8].DefaultCellStyle.Format = "#,##0.00 $";
             dgvData.Columns[9].DefaultCellStyle.Format = "0.00%";
+            dgvData.Columns["MarkerPriceOfRisk"].DefaultCellStyle.Format = "#,##0.00 $";
+            dgvData.Columns["InterestRate"].DefaultCellStyle.Format = "0.00 %";
+            dgvData.Columns["TotalValueByStock"].DefaultCellStyle.Format = "#,##0.00 $";
+            dgvData.Columns["InvestOnNewTree"].DefaultCellStyle.Format = "0.00 %";
+            dgvData.Columns["Zeta"].DefaultCellStyle.Format = "0.00 %";
             dgvData.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgvData.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             int count = BanksData.Columns.Count;
@@ -31,6 +41,15 @@ namespace MinC
             }
 
             DataFileChanged += FormMain_DataFileChanged;
+            StringFilterChanged += FormMain_StringFilterChanged;
+            
+            cmbi.SelectedIndex = 0;
+            cmbi.FormatString = "0.00%";
+        }
+
+        private void FormMain_StringFilterChanged(object sender, string e)
+        {
+            BanksData.DefaultView.RowFilter = StringFilter;
         }
 
         DataPrototype banksData;
@@ -42,6 +61,56 @@ namespace MinC
                 banksData = value;
                 DataTableChanged?.Invoke(this, banksData);
             }
+        }
+
+        string stringFilter;
+        public string StringFilter
+        {
+            get => stringFilter;
+            set
+            {
+                stringFilter = value;
+                StringFilterChanged?.Invoke(this, stringFilter);
+            }
+        }
+
+        private string FilterBuilder()
+        {
+            string s = "";
+            s = "";
+
+            if (cmbBank.SelectedIndex <= 0)
+            {
+                dgvData.Columns[0].Visible = true;
+                s = "1=1";
+            }
+            else
+            {
+                dgvData.Columns[0].Visible = false;
+                s = "BankName = '" + (string)cmbBank.SelectedItem + "'";
+            }
+
+            switch (cmbi.SelectedIndex)
+            {
+                case 1:
+                    s += " AND InvestOnNewTree > '" + nudFilterValue_i.Value.ToString() + "'";
+                    break;
+                case 2:
+                    s += " AND InvestOnNewTree < '" + nudFilterValue_i.Value.ToString() + "'";
+                    break;
+                case 3:
+                    s += " AND InvestOnNewTree >= '" + nudFilterValue_i.Value.ToString() + "'";
+                    break;
+                case 4:
+                    s += " AND InvestOnNewTree <= '" + nudFilterValue_i.Value.ToString() + "'";
+                    break;
+                case 5:
+                    s += " AND InvestOnNewTree = '" + nudFilterValue_i.Value.ToString() + "'";
+                    break;
+                default:
+                        break;
+            }
+            return s;
         }
 
         private void FormMain_DataFileChanged(object sender, string e)
@@ -67,32 +136,35 @@ namespace MinC
             cmbBank.SelectedIndex = 0;
 
             BanksData.Rows.Clear();
+            Banks.Clear();
             foreach (var sheet in DataFile.Workbook.Worksheets)
             {
                 string bankName = sheet.Name;
-                if (sheet.Dimension == null)
+                Banks.Add(bankName, "");
+                if (sheet.Dimension == null || sheet.Dimension.Columns < BanksData.Columns.Count - 1)
                 {
                     continue;
                 }
-                for (int row = 3; row < sheet.Dimension.Rows; row++)
+                for (int row = 2; row <= sheet.Dimension.Rows; row++)
                 {
                     var nr = BanksData.NewRow();
                     nr[0] = bankName;
                     for (int column = 0; column < BanksData.Columns.Count; column++)
                     {
                         int n = sheet.Dimension.Columns;
-                        if (sheet.Cells[row + 3, column].Value != null)
+                        if (sheet.Cells[row, column + 1].Value != null)
                         {
-                            nr[column + 1] = sheet.Cells[row + 3, column].Value;
+                            nr[column + 1] = sheet.Cells[row, column + 1].Value;
                         }
                     }
                     BanksData.Rows.Add(nr);
                 }
             }
+            BanksData.DefaultView.Sort = "BankName ASC, FinancialYear ASC";
             dgvData.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-
-
         }
+
+        internal Dictionary<string, string> Banks = new Dictionary<string, string>();
 
         ExcelPackage dataFile;
         public ExcelPackage DataFile
@@ -107,15 +179,13 @@ namespace MinC
         }
 
 
-        FormModelB frmBankStability;
-
-
+        FormModelB frmModelB;
         private void btnModelB_Click(object sender, EventArgs e)
         {
-            if (frmBankStability == null || frmBankStability.IsDisposed)
+            if (frmModelB == null || frmModelB.IsDisposed)
             {
-                frmBankStability = new FormModelB();
-                frmBankStability.Show();
+                frmModelB = new FormModelB();
+                frmModelB.Show();
             }
         }
 
@@ -123,6 +193,16 @@ namespace MinC
         string currentFile;
         private void lblDataFile_Click(object sender, EventArgs e)
         {
+            if (frmModelA != null)
+            {
+                frmModelA.Close();
+            }
+
+            if (frmModelB != null)
+            {
+                frmModelB.Close();
+            }
+
             var ofd = new OpenFileDialog()
             {
                 Filter = "Excel file|*.xlsx; *.xlsm",
@@ -138,27 +218,31 @@ namespace MinC
 
         private void cmbBank_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbBank.SelectedIndex < 0)
-            {
-                return;
-            }
-            else if (cmbBank.SelectedIndex == 0)
-            {
-                dgvData.Columns[0].Visible = true;
-                BanksData.DefaultView.RowFilter = "1=1";
-            }
-            else
-            {
-                dgvData.Columns[0].Visible = false;
+            StringFilter = FilterBuilder();
+        }
 
-                string s = (string)cmbBank.SelectedItem;
-                BanksData.DefaultView.RowFilter = "BankName = '" + s + "'";
+
+        FormModelA frmModelA;
+        private void btnModelA_Click(object sender, EventArgs e)
+        {
+            if (frmModelA == null || frmModelA.IsDisposed)
+            {
+                frmModelA = new FormModelA();
+                frmModelA.frmMain = this;
+                frmModelA.Show();
             }
         }
 
-        private void btnModelA_Click(object sender, EventArgs e)
+
+        private void cmbi_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+            nudFilterValue_i.Enabled = (cmbi.SelectedIndex > 0);
+            StringFilter = FilterBuilder();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(BanksData.DefaultView.Sort);
         }
     }
 }

@@ -48,7 +48,7 @@ namespace MinC
         internal DataColumn colTotalExpense           = new DataColumn("TotalExpense")
         {
             DataType                                  = typeof(double),
-            Caption                                   = "Total Expense"
+            Caption                                   = "Total Expense (C)"
         };
 
         internal DataColumn colInvestOnTech           = new DataColumn("InvestOnTech")
@@ -57,23 +57,6 @@ namespace MinC
             Caption                                   = "Invest On Tech"
         };
 
-        internal DataColumn colInvestOnNewTree = new DataColumn("InvestOnNewTree")
-        {
-            DataType = typeof(double),
-            Caption = "InvestOnNewTree"
-        };
-
-        internal DataColumn colZeta = new DataColumn("Zeta")
-        {
-            DataType = typeof(double),
-            Caption = "Zeta(i)"
-        };
-
-        internal DataColumn colY = new DataColumn("Y")
-        {
-            DataType = typeof(double),
-            Caption = "Y(t)"
-        };
 
         internal DataColumn colCustomerDeposit        = new DataColumn("CustomerDeposit")
         {
@@ -87,6 +70,43 @@ namespace MinC
             Caption                                   = "Expense/OperatingIncome"
         };
 
+        internal DataColumn colDividends = new DataColumn("Dividends")
+        {
+            DataType = typeof(double),
+            Caption = "Dividends (Y)"
+        };
+
+        internal DataColumn colMarkerPriceOfRisk = new DataColumn("MarkerPriceOfRisk")
+        {
+            DataType = typeof(double),
+            Caption = "Marker Price of Risk (κ)"
+        };
+
+
+        internal DataColumn colInterestRate = new DataColumn("InterestRate")
+        {
+            DataType = typeof(double),
+            Caption = "Interest Rate (r)"
+        };
+
+        internal DataColumn colTotalValueByStock = new DataColumn("TotalValueByStock")
+        {
+            DataType = typeof(double),
+            Caption = "Total Value by Stock"
+        };
+
+        internal DataColumn colInvestOnNewTree = new DataColumn("InvestOnNewTree")
+        {
+            DataType = typeof(double),
+            Caption = "Invest on New Tree (i)"
+        };
+
+        internal DataColumn colZeta = new DataColumn("Zeta")
+        {
+            DataType = typeof(double),
+            Caption = "ζ(i)"
+        };
+
         public DataPrototype()
         {
             Columns.Add(colBankName);
@@ -97,9 +117,14 @@ namespace MinC
             Columns.Add(colNetProfitBeforeTax);
             Columns.Add(colTotalExpense);
             Columns.Add(colInvestOnTech);
-            Columns.Add(colInvestOnNewTree);
             Columns.Add(colCustomerDeposit);
             Columns.Add(colExpenseOperatingIncome);
+            Columns.Add(colDividends);
+            Columns.Add(colMarkerPriceOfRisk);
+            Columns.Add(colInterestRate);
+            Columns.Add(colTotalValueByStock);
+            Columns.Add(colInvestOnNewTree);
+            Columns.Add(colZeta);
         }
     }
 }

@@ -50,9 +50,14 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WinMathML">
+      <HintPath>..\..\..\Downloads\Compressed\WinMathML.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Bank.cs" />
+    <Compile Include="DataModelA.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="DataPrototype.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -76,6 +81,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormModelA.resx">
+      <DependentUpon>FormModelA.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormModelB.resx">
       <DependentUpon>FormModelB.cs</DependentUpon>
     </EmbeddedResource>
