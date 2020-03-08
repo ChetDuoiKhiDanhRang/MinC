@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using fmath.controls;
 
 namespace MinC
 {
@@ -16,20 +15,8 @@ namespace MinC
         internal FormMain frmMain;
         public FormModelA()
         {
-            MathMLFormulaControl.setFolderUrlForFonts(Application.StartupPath + @"\fonts");
-            MathMLFormulaControl.setFolderUrlForGlyphs(Application.StartupPath + @"\glyphs");
-
             InitializeComponent();
 
-            fm1.latex = true;
-            fm1.Font = new System.Drawing.Font("Harlow Solid Italic", 6F,
-                System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            String formular1 = "\\documentclass[12pt]\r\n" +
-                "\\begin{document}\r\n" +
-                "\\begin{equation}\\theta_{t} = x^2\\end{equation}\r\n" + 
-                "\\end{document}\r\n";
-            fm1.Contents = formular1;
-            fm1.Invalidate();
 
             datatable = new DataModelA() { BankName = (string)cmbBank.SelectedItem };
             dgvModelA.DataSource = datatable;
@@ -70,8 +57,11 @@ namespace MinC
         {
             if (cmbBank.SelectedIndex >= 0)
             {
+                double sumDeltaTheta = 0d;
+                double sumDeltaOfThetaP2 = 0;
                 string filter = "";
                 filter = "BankName = '" + (string)cmbBank.SelectedItem + "'";
+
                 switch (frmMain.cmbi.SelectedIndex)
                 {
                     case 1:
@@ -94,7 +84,7 @@ namespace MinC
                 }
                 var datas = frmMain.BanksData.Select(filter, "FinancialYear ASC");
                 int count = datas.Count();
-                if (count > 0)
+                if (count > 2)
                 {
                     datatable.Rows.Clear();
                     for (int i = 0; i < count; i++)
@@ -103,11 +93,13 @@ namespace MinC
                         newRow["FinancialYear"] = datas[i]["FinancialYear"];
                         newRow["TotalAssets"] = datas[i]["TotalAssets"];
                         newRow["TotalExpense"] = datas[i]["TotalExpense"];
+                        newRow["InvestOnTech"] = datas[i]["InvestOnTech"];
                         newRow["Dividends"] = datas[i]["Dividends"];
                         newRow["MarkerPriceOfRisk"] = datas[i]["MarkerPriceOfRisk"];
                         newRow["InterestRate"] = datas[i]["InterestRate"];
                         newRow["InvestOnNewTree"] = datas[i]["InvestOnNewTree"];
                         newRow["Zeta"] = datas[i]["Zeta"];
+                        newRow["dHt"] = "-(" + Convert.ToString(Math.Round((double)datas[i]["InterestRate"], 2)) + "dt + " + Convert.ToString(Math.Round((double)datas[i]["MarkerPriceOfRisk"], 2)) +")";
                         if (i < count - 1)
                         {
                             newRow["Theta"] = (double)datas[i + 1]["Dividends"] / (double)newRow["Zeta"];
@@ -115,12 +107,19 @@ namespace MinC
                             if (i > 0)
                             {
                                 newRow["DeltaOfTheta"] = (double)newRow["Theta"] - (double)datatable.Rows[i - 1]["Theta"];
+                                sumDeltaTheta += (double)newRow["DeltaOfTheta"];
+                                sumDeltaOfThetaP2 += (double)newRow["DeltaOfTheta"] * (double)newRow["DeltaOfTheta"];
                             }
                         }
 
                         datatable.Rows.Add(newRow);
                     }
                 }
+                var mu = sumDeltaTheta / (count - 2);
+                var sigma = Math.Sqrt(sumDeltaOfThetaP2 / (count - 2) - System.Math.Pow(2, mu));
+                txbResult.Text = string.Format("RESULT:" + Environment.NewLine + " μ = {0:00.00}" + Environment.NewLine + " σ = {1:00.00}", mu, sigma);
+                lblF1.Text = string.Format("{0:00.00}dt + {1:00.00}", mu, sigma);
+                dgvModelA.AutoResizeColumns();
             }
         }
     }

@@ -1,8 +1,6 @@
 ﻿using OfficeOpenXml;
 using System;
 using System.Windows.Forms;
-using fmath;
-using fmath.controls;
 using System.Collections.Generic;
 
 namespace MinC

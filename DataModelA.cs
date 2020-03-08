@@ -83,20 +83,30 @@ namespace MinC
             Caption = "F(K)"
         };
 
+        internal DataColumn coldHt = new DataColumn("dHt")
+        {
+            DataType = typeof(string),
+            Caption = "dHt/Ht"
+        };
+
+
         public DataModelA()
         {
             Columns.Add(colFinancialYear);
-            Columns.Add(colTotalAssets);
-            Columns.Add(colTotalExpense);
+
             Columns.Add(colInvestOnTech);
             Columns.Add(colDividends);
+            Columns.Add(colTotalAssets);
+            Columns.Add(colTotalExpense);                                           
             Columns.Add(colMarkerPriceOfRisk);
             Columns.Add(colInterestRate);
             Columns.Add(colInvestOnNewTree);
             Columns.Add(colZeta);
             Columns.Add(colTheta);
-            Columns.Add(colDeltaTheta);
             Columns.Add(colFK);
+            Columns.Add(colDeltaTheta);
+            Columns.Add(coldHt);
+
         }
 
     }
