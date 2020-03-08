@@ -29,6 +29,12 @@ namespace MinC
             Caption = "Total Expense (C)"
         };
 
+        internal DataColumn colInvestOnTech = new DataColumn("InvestOnTech")
+        {
+            DataType = typeof(double),
+            Caption = "Invest On Tech"
+        };
+
         internal DataColumn colDividends = new DataColumn("Dividends")
         {
             DataType = typeof(double),
@@ -65,6 +71,12 @@ namespace MinC
             Caption = "θ"
         };
 
+        internal DataColumn colDeltaTheta = new DataColumn("DeltaOfTheta")
+        {
+            DataType = typeof(double),
+            Caption = "Δθ"
+        };
+
         internal DataColumn colFK = new DataColumn("FK")
         {
             DataType = typeof(double),
@@ -76,12 +88,14 @@ namespace MinC
             Columns.Add(colFinancialYear);
             Columns.Add(colTotalAssets);
             Columns.Add(colTotalExpense);
+            Columns.Add(colInvestOnTech);
             Columns.Add(colDividends);
             Columns.Add(colMarkerPriceOfRisk);
             Columns.Add(colInterestRate);
             Columns.Add(colInvestOnNewTree);
             Columns.Add(colZeta);
             Columns.Add(colTheta);
+            Columns.Add(colDeltaTheta);
             Columns.Add(colFK);
         }
 

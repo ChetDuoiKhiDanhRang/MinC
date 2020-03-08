@@ -57,7 +57,6 @@ namespace MinC
             Caption                                   = "Invest On Tech"
         };
 
-
         internal DataColumn colCustomerDeposit        = new DataColumn("CustomerDeposit")
         {
             DataType                                  = typeof(double),

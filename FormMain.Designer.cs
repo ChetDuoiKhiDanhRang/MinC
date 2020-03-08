@@ -229,6 +229,7 @@
             0,
             0,
             65536});
+            this.nudFilterValue_i.ValueChanged += new System.EventHandler(this.nudFilterValue_i_ValueChanged);
             // 
             // FormMain
             // 
@@ -271,8 +272,8 @@
         private System.Windows.Forms.Button btnBankStability;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cmbi;
-        private System.Windows.Forms.NumericUpDown nudFilterValue_i;
+        internal System.Windows.Forms.ComboBox cmbi;
+        internal System.Windows.Forms.NumericUpDown nudFilterValue_i;
     }
 }
 
