@@ -10,7 +10,7 @@ namespace MinC
         public event EventHandler<string> DataFileChanged;
         public event EventHandler<DataPrototype> DataTableChanged;
         public event EventHandler<string> StringFilterChanged;
-        public FormMain()
+        public FormMain(string user)
         {
             InitializeComponent();
 
@@ -43,6 +43,7 @@ namespace MinC
 
             cmbi.SelectedIndex = 0;
             cmbi.FormatString = "0.00%";
+            this.Text = user;
         }
 
 
@@ -261,5 +262,9 @@ namespace MinC
             MessageBox.Show(BanksData.DefaultView.Sort);
         }
 
+        private void FormMain_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

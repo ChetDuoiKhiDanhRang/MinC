@@ -26,18 +26,18 @@ namespace MinC
                 dgvModelA.Columns[i].HeaderText = datatable.Columns[i].Caption;
             }
 
-            dgvModelA.Columns["FinancialYear"].DefaultCellStyle.Format = "###0";
-            dgvModelA.Columns["TotalAssets"].DefaultCellStyle.Format = "#,##0.00 $";
-            dgvModelA.Columns["TotalExpense"].DefaultCellStyle.Format = "#,##0.00 $";
-            dgvModelA.Columns["InvestOnTech"].DefaultCellStyle.Format = "#,##0.00 $";
-            dgvModelA.Columns["Dividends"].DefaultCellStyle.Format = "#,##0.00 $";
+            dgvModelA.Columns["FinancialYear"].DefaultCellStyle.Format     = "###0";
+            dgvModelA.Columns["TotalAssets"].DefaultCellStyle.Format       = "#,##0.00 $";
+            dgvModelA.Columns["TotalExpense"].DefaultCellStyle.Format      = "#,##0.00 $";
+            dgvModelA.Columns["InvestOnTech"].DefaultCellStyle.Format      = "#,##0.00 $";
+            dgvModelA.Columns["Dividends"].DefaultCellStyle.Format         = "#,##0.00 $";
             dgvModelA.Columns["MarkerPriceOfRisk"].DefaultCellStyle.Format = "#,##0.00 $";
-            dgvModelA.Columns["InterestRate"].DefaultCellStyle.Format = "0.00 %";
-            dgvModelA.Columns["InvestOnNewTree"].DefaultCellStyle.Format = "0.00 %";
-            dgvModelA.Columns["Zeta"].DefaultCellStyle.Format = "#,##0.00 $";
-            dgvModelA.Columns["Theta"].DefaultCellStyle.Format = "#,##0.00";
-            dgvModelA.Columns["DeltaOfTheta"].DefaultCellStyle.Format = "#,##0.00";
-            dgvModelA.Columns["FK"].DefaultCellStyle.Format = "0.00";
+            dgvModelA.Columns["InterestRate"].DefaultCellStyle.Format      = "0.00 %";
+            dgvModelA.Columns["InvestOnNewTree"].DefaultCellStyle.Format   = "0.00 %";
+            dgvModelA.Columns["Zeta"].DefaultCellStyle.Format              = "#,##0.00 $";
+            dgvModelA.Columns["Theta"].DefaultCellStyle.Format             = "#,##0.00";
+            dgvModelA.Columns["DeltaOfTheta"].DefaultCellStyle.Format      = "#,##0.00";
+            dgvModelA.Columns["FK"].DefaultCellStyle.Format                = "0.00";
 
         }
 

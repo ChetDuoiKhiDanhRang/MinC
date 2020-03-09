@@ -53,6 +53,9 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>b.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EPPlus, Version=4.5.3.3, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
       <HintPath>packages\EPPlus.4.5.3.3\lib\net40\EPPlus.dll</HintPath>
@@ -80,6 +83,12 @@
     <Compile Include="DataPrototype.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="FormLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLogin.Designer.cs">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormModelA.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,8 +107,17 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormSplash.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSplash.Designer.cs">
+      <DependentUpon>FormSplash.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormLogin.resx">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormModelA.resx">
       <DependentUpon>FormModelA.cs</DependentUpon>
     </EmbeddedResource>
@@ -108,6 +126,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSplash.resx">
+      <DependentUpon>FormSplash.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -134,14 +155,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\A_F1.rtf" />
-    <None Include="Resources\A_F10.rtf" />
-    <None Include="Resources\A_F2.rtf" />
-    <None Include="Resources\A_F3.rtf" />
-    <None Include="Resources\A_F4.rtf" />
-    <None Include="Resources\A_F5.rtf" />
-    <None Include="Resources\A_F6.rtf" />
-    <None Include="Resources\A_F7.rtf" />
     <None Include="Resources\b.png" />
   </ItemGroup>
   <ItemGroup>
@@ -152,6 +165,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\f1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\173049 - login.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\173082 - remove sign.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="b.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
