@@ -22,6 +22,7 @@ namespace MinC
             InitializeComponent();
             t.Abort();
             txbUser.Text = Properties.Settings.Default.LastUser;
+            this.Activate();
         }
 
         private void txb_TextChanged(object sender, EventArgs e)

@@ -23,6 +23,12 @@ namespace MinC
             Caption = "Total Assets"
         };
 
+        internal DataColumn colEquity = new DataColumn("Equity")
+        {
+            DataType = typeof(double),
+            Caption = "Equity"
+        };
+
         internal DataColumn colTotalExpense = new DataColumn("TotalExpense")
         {
             DataType = typeof(double),
@@ -89,6 +95,29 @@ namespace MinC
             Caption = "dHt/Ht"
         };
 
+        internal DataColumn cola1 = new DataColumn("a1")
+        {
+            DataType = typeof(double),
+            Caption = "a1"
+        };
+
+        internal DataColumn cola2 = new DataColumn("a2")
+        {
+            DataType = typeof(double),
+            Caption = "a2"
+        };
+
+        internal DataColumn colAsup = new DataColumn("Asup")
+        {
+            DataType = typeof(string),
+            Caption = "A^"
+        };
+
+        internal DataColumn colZ = new DataColumn("Z")
+        {
+            DataType = typeof(string),
+            Caption = "z"
+        };
 
         public DataModelA()
         {
@@ -97,6 +126,7 @@ namespace MinC
             Columns.Add(colInvestOnTech);
             Columns.Add(colDividends);
             Columns.Add(colTotalAssets);
+            Columns.Add(colEquity);
             Columns.Add(colTotalExpense);                                           
             Columns.Add(colMarkerPriceOfRisk);
             Columns.Add(colInterestRate);
@@ -106,7 +136,10 @@ namespace MinC
             Columns.Add(colFK);
             Columns.Add(colDeltaTheta);
             Columns.Add(coldHt);
-
+            Columns.Add(cola1);
+            Columns.Add(cola2);
+            Columns.Add(colAsup);
+            Columns.Add(colZ);
         }
 
     }

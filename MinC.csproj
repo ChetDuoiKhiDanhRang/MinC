@@ -180,6 +180,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="b.ico" />
+    <None Include="Resources\FB.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
