@@ -49,7 +49,12 @@ namespace MinC
             {
                 cmbBank.Items.Add(item.Key);
             }
+            tech = frmMain.tech;
+            nuddt.Value = (decimal)frmMain.dt;
         }
+
+        string tech;
+        
 
         double muNetProfitBeforeTax;
         double sigmaProfitBeforeTax;
@@ -190,7 +195,7 @@ namespace MinC
 
                 double z2 = equity / sigmaProfitBeforeTax;
                 double z = z1 + z2/(a1 * (double)nuddt.Value + a2);
-                lblz.Text = "z = " + z.ToString() + ((z >= (double)nudMinZ.Value && z <= (double)nudMaxZ.Value)? "    (Approve)": "    (Reject)");
+                lblz.Text = "z = " + z.ToString() + ((z >= (double)nudMinZ.Value && z <= (double)nudMaxZ.Value)? "    (Approve ": "    (Deciline ") + tech + ")";
                 lblz.ForeColor = (z >= (double)nudMinZ.Value && z <= (double)nudMaxZ.Value)? Color.Navy:Color.DarkRed;
             }
         }

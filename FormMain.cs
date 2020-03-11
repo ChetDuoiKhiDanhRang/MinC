@@ -46,13 +46,14 @@ namespace MinC
             this.Text = user;
         }
 
-
+        FormInput frmInput;
 
 
 
         internal Dictionary<string, string> Banks = new Dictionary<string, string>();
 
-
+        internal double dt;
+        internal string tech;
 
         FormModelB frmModelB;
         private void btnModelB_Click(object sender, EventArgs e)
@@ -132,6 +133,20 @@ namespace MinC
             lblFileLocation.Visible = (dataFile != null);
             lblFileLocation.Text = e.Substring(e.IndexOf('('), e.Length - e.IndexOf('('));
             textBox1.Text = e.Substring(0, e.IndexOf('('));
+            
+            if (frmInput == null || frmInput.IsDisposed)
+            {
+                frmInput = new FormInput(this);
+            }
+            if (frmInput.ShowDialog() == DialogResult.OK)
+            {
+                dt = (double)frmInput.nuddt.Value;
+                tech = frmInput.txbTech.Text;
+            }
+            else
+            {
+                return;
+            };
 
             //add banks to combobox
             cmbBank.Items.Clear();
@@ -175,6 +190,7 @@ namespace MinC
             }
             BanksData.DefaultView.Sort = "BankName ASC, FinancialYear ASC";
             dgvData.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+            
         }
 
         //filter data
